@@ -10,8 +10,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp({
-  // your config
-})
+  apiKey: 'AIzaSyCoYp1JmL-A969SyvUBpWvvr0wTcy-q9Jw',
+  authDomain: 's24defichat.firebaseapp.com',
+  projectId: 's24defichat',
+  storageBucket: 's24defichat.appspot.com',
+  messagingSenderId: '308829573649',
+  appId: '1:308829573649:web:87e2dd49614f68ca1017b0',
+  measurementId: 'G-6J9PNRP3CJ',
+});
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
