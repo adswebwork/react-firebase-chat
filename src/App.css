@@ -1,5 +1,6 @@
 body {
-  background-color: #282c34;
+  /* background-color: #282c34; */
+  background-color: #FFF;
 }
 
 .App {
@@ -9,7 +10,7 @@ body {
 }
 
 .App header {
-  background-color: #181717;
+  background-color: #000;
   height: 10vh;
   min-height: 50px;
   color: white;
@@ -30,12 +31,12 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  background-color: rgb(40, 37, 53);
+  /* background-color: rgb(40, 37, 53); */
 }
 
 main {
   padding: 10px;
-  height: 80vh;
+  height: 90vh;
   margin: 10vh 0 10vh;
   overflow-y: scroll;
   display: flex;
@@ -51,14 +52,17 @@ main::-webkit-scrollbar-track {
 }
 
 main::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  /* background: #6649b8; */
+  background: #FFF;
 }
+
 
 form {
   height: 10vh;
   position: fixed;
   bottom: 0;
-  background-color: rgb(24, 23, 23);
+  /* background-color: rgb(24, 23, 23); */
+  background-color: #FFF;
   width: 100%;
   max-width: 728px;
   display: flex;
@@ -86,7 +90,7 @@ button {
   background-color: #282c34; /* Green */
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 15px 22px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -105,10 +109,36 @@ button:disabled {
   background: white;
   max-width: 400px;
   margin: 0 auto;
+  border:1px solid #d5d5d5;
+  box-shadow: 1px 1px 22px 4px #d5d5d5;
+}
+
+
+.messagesContainer{
+  flex-grow: 1;
+}
+.announcement {
+  border-top:.5px solid #d5d5d5;
+}
+
+
+/**
+*
+**/
+.screenContainer{
+  /* min-height:650px; */
+  display:flex;
+justify-content: space-between;
+flex-direction: column;
 }
 
 
 
+
+
+h1{
+  font-size:29px;
+}
 
 ul, li {
   text-align: left;
@@ -122,7 +152,7 @@ p {
   padding: 10px 20px;
   border-radius: 25px;
   position: relative;
-  color: white;
+  color: black;
   text-align: center;
 }
 

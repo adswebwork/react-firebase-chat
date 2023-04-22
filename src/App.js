@@ -25,46 +25,55 @@ const analytics = firebase.analytics();
 
 
 function App() {
-
   const [user] = useAuthState(auth);
 
   return (
-    <div className="App">
+    <div className='App'>
       <header>
-        <h1>⚛️🔥💬</h1>
+        {/* <h1>⚛️🔥💬</h1> */}
+        <h1>S24DeFi Chat️ 💬</h1>
         <SignOut />
       </header>
 
-      <section>
-        {user ? <ChatRoom /> : <SignIn />}
-      </section>
-
+      <section>{user ? <ChatRoom /> : <SignIn />}</section>
     </div>
   );
 }
 
 function SignIn() {
-
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
-  }
+  };
 
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p>Do not violate the community guidelines or you will be banned for life!</p>
+      <button
+        className='sign-in'
+        onClick={signInWithGoogle}
+      >
+        Sign in with Google
+      </button>
+      <p>
+        Do not violate the community guidelines
+        <br /> or you will be banned for life!
+      </p>
     </>
-  )
-
+  );
 }
 
 function SignOut() {
-  return auth.currentUser && (
-    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
-  )
+  return (
+    auth.currentUser && (
+      <button
+        className='sign-out'
+        onClick={() => auth.signOut()}
+      >
+        Sign Out
+      </button>
+    )
+  );
 }
-
 
 function ChatRoom() {
   const dummy = useRef();
@@ -75,7 +84,6 @@ function ChatRoom() {
 
   const [formValue, setFormValue] = useState('');
 
-
   const sendMessage = async (e) => {
     e.preventDefault();
 
@@ -85,30 +93,50 @@ function ChatRoom() {
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
-      photoURL
-    })
+      photoURL,
+    });
 
     setFormValue('');
     dummy.current.scrollIntoView({ behavior: 'smooth' });
-  }
+  };
 
-  return (<>
-    <main>
+  return (
+    <>
+      <main>
+        <div className='screenContainer'>
+          <div className='messagesContainer'>
+            {messages &&
+              messages.map((msg) => (
+                <ChatMessage
+                  key={msg.id}
+                  message={msg}
+                />
+              ))}
 
-      {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+            <span ref={dummy}></span>
+          </div>
+          {/* <div className='announcement'>
+            <p>made for fun, powered by react</p>
+          </div> */}
+        </div>
+      </main>
 
-      <span ref={dummy}></span>
+      <form onSubmit={sendMessage}>
+        <input
+          value={formValue}
+          onChange={(e) => setFormValue(e.target.value)}
+          placeholder='say something nice'
+        />
 
-    </main>
-
-    <form onSubmit={sendMessage}>
-
-      <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
-
-      <button type="submit" disabled={!formValue}>🕊️</button>
-
-    </form>
-  </>)
+        <button
+          type='submit'
+          disabled={!formValue}
+        >
+          🕊️
+        </button>
+      </form>
+    </>
+  );
 }
 
 
